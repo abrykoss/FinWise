@@ -1,19 +1,99 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 20px;
-}
-
-h1 {
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
     color: #333;
 }
 
-a {
-    display: block;
-    margin: 10px 0;
-    text-decoration: none;
-    color: #007bff;
+header {
+    background-color: #6a1b9a; /* Основний фіолетовий колір */
+    color: white;
+    text-align: center;
+    padding: 2rem;
 }
 
-a:hover {
-    text-decoration: underline;
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+header p {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.intro, .courses, .tools {
+    margin-bottom: 2rem;
+}
+
+.intro h2, .courses h2, .tools h2 {
+    color: #6a1b9a;
+    text-align: center;
+}
+
+.course-container, .tool-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.course-card, .tool-card {
+    background-color: white;
+    border: 2px solid #6a1b9a;
+    border-radius: 8px;
+    padding: 1.5rem;
+    width: 45%;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.course-card h3, .tool-card h3 {
+    color: #6a1b9a;
+    margin-top: 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: #8e24aa; /* Трохи світліший фіолетовий для кнопок */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 1rem;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #4a0072; /* Темніший фіолетовий при наведенні */
+}
+
+footer {
+    background-color: #6a1b9a;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+header {
+    min-height: 500px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
 }

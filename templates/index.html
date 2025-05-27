@@ -2,12 +2,130 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <title>Фінансова грамотність</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinWise - Фінансова грамотність для школярів</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
-<body>
-    <h1>Виберіть режим навчання</h1>
-    <a href="/kids">Навчання для дітей</a>
-    <a href="/teens">Навчання для підлітків</a>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Навігація -->
+    <nav class="bg-white shadow-md py-4">
+        <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-book text-2xl text-purple-600"></i>
+                <h1 class="text-2xl font-bold text-purple-700">FinWise</h1>
+            </div>
+            <div class="space-x-6">
+                <a href="/" class="text-gray-600 hover:text-purple-600">Головна</a>
+                <a href="/courses" class="text-gray-600 hover:text-purple-600">Курси</a>
+                <a href="/tools" class="text-gray-600 hover:text-purple-600">Інструменти</a>
+                <a href="/contact" class="text-gray-600 hover:text-purple-600">Контакти</a>
+            </div>
+            <a href="/get-started" class="bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-800 transition-colors">Почати навчання</a>
+        </div>
+    </nav>
+
+    <!-- Заголовок -->
+    <header class="bg-gradient-to-r from-purple-600 to-purple-900 text-white py-16 md:py-24 flex items-center">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 text-center md:text-left">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Навчання фінансової грамотності для школярів</h1>
+                <p class="text-lg mb-6">FinWise – це інтерактивна платформа з курсами, тестами та симуляціями для дітей віком до 13 та до 17 років.</p>
+                <a href="/get-started" class="bg-white text-purple-700 py-3 px-6 rounded-lg font-semibold hover:bg-gray-100 transition-colors">Почати зараз</a>
+            </div>
+            <div class="md:w-1/2 mt-6 md:mt-0">
+                <!-- Placeholder для зображення -->
+                <img src="/static/images/hero-image.jpg" alt="Дитина тримає книгу про фінанси" class="w-full rounded-lg">
+            </div>
+        </div>
+    </header>
+
+    <!-- Про платформу -->
+    <section class="max-w-7xl mx-auto px-4 py-12">
+        <h2 class="text-3xl font-semibold text-purple-700 text-center mb-6">Про FinWise</h2>
+        <div class="flex flex-col md:flex-row items-center gap-6">
+            <div class="md:w-1/2">
+                <!-- Placeholder для зображення -->
+                <img src="/static/images/about-image.jpg" alt="Дитина вчиться фінансовій грамотності" class="w-full rounded-lg">
+            </div>
+            <div class="md:w-1/2">
+                <p class="text-lg">FinWise – це платформа, яка допомагає школярам опанувати фінансову грамотність у цікавій та інтерактивній формі. Ми пропонуємо курси для двох вікових груп, тести для перевірки знань, а також практичні симуляції реальних фінансових ситуацій.</p>
+                <a href="/about" class="text-purple-600 font-semibold mt-4 inline-block hover:underline">Дізнатися більше</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Курси -->
+    <section class="bg-gray-100 py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-semibold text-purple-700 text-center mb-6">Наші курси</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <i class="fas fa-child text-4xl text-purple-600 mb-4"></i>
+                    <h3 class="text-xl font-bold text-purple-700 mb-2">Курс для молодших (до 13 років)</h3>
+                    <p>Прості уроки про основи фінансів, бюджетування та заощадження.</p>
+                    <a href="/kids" class="btn mt-4 inline-block bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-800 transition-colors">Перейти до курсу</a>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <i class="fas fa-graduation-cap text-4xl text-purple-600 mb-4"></i>
+                    <h3 class="text-xl font-bold text-purple-700 mb-2">Курс для старших (14–17 років)</h3>
+                    <p>Поглиблені теми про кредити, інвестиції та фінансове планування.</p>
+                    <a href="/teens" class="btn mt-4 inline-block bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-800 transition-colors">Перейти до курсу</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Інструменти -->
+    <section class="max-w-7xl mx-auto px-4 py-12">
+        <h2 class="text-3xl font-semibold text-purple-700 text-center mb-6">Інтерактивні інструменти</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-white p-6 rounded-xl shadow-lg">
+                <i class="fas fa-calculator text-4xl text-purple-600 mb-4"></i>
+                <h3 class="text-xl font-bold text-purple-700 mb-2">Калькулятор кредитів та депозитів</h3>
+                <p>Розрахуйте виплати по кредитах та доходи від депозитів у кілька кліків.</p>
+                <a href="/calculator" class="btn mt-4 inline-block bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-800 transition-colors">Спробувати</a>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg">
+                <i class="fas fa-gamepad text-4xl text-purple-600 mb-4"></i>
+                <h3 class="text-xl font-bold text-purple-700 mb-2">Міні-гра: Життєві ситуації</h3>
+                <p>Практикуйте фінансові рішення у цікавій ігровій формі.</p>
+                <a href="/game" class="btn mt-4 inline-block bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-800 transition-colors">Грати</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Статистика -->
+    <section class="bg-gradient-to-r from-purple-600 to-purple-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
+            <div>
+                <h3 class="text-3xl font-bold">1,500+</h3>
+                <p>Учнів на платформі</p>
+            </div>
+            <div>
+                <h3 class="text-3xl font-bold">20+</h3>
+                <p>Уроків</p>
+            </div>
+            <div>
+                <h3 class="text-3xl font-bold">95%</h3>
+                <p>Задоволених користувачів</p>
+            </div>
+            <div>
+                <h3 class="text-3xl font-bold">2</h3>
+                <p>Курси для різних вікових груп</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="bg-purple-900 text-white text-center py-6">
+        <p>© 2025 FinWise. Усі права захищено.</p>
+        <div class="mt-2 space-x-4">
+            <a href="/privacy" class="text-gray-300 hover:text-white">Політика конфіденційності</a>
+            <a href="/terms" class="text-gray-300 hover:text-white">Умови використання</a>
+            <a href="/contact" class="text-gray-300 hover:text-white">Контакти</a>
+        </div>
+    </footer>
 </body>
 </html>
