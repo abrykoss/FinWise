@@ -97,3 +97,9 @@ img {
     max-width: 100%;
     height: auto;
 }
+
+input:focus {
+    outline: none;
+    border-color: #6b46c1;
+    box-shadow: 0 0 5px rgba(107, 70, 193, 0.3);
+}

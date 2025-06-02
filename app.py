@@ -42,9 +42,9 @@ def teens_decision():
 def teens_route():
     return render_template('teens_route.html')
 
-@app.route('/teens/credit')
-def teens_credit():
-    return render_template('teens_credit.html')
+@app.route('/teens/calculators')
+def teens_calculators():
+    return render_template('teens_calculators.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
