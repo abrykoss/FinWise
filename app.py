@@ -46,5 +46,46 @@ def teens_route():
 def teens_calculators():
     return render_template('teens_calculators.html')
 
+@app.route('/teens/courses/budget')
+def teens_course_budget():
+    return render_template('teens_budget.html')
+
+@app.route('/teens/courses/taxes')
+def teens_course_taxes():
+    return render_template('teens_taxes.html')
+
+@app.route('/teens/courses/deposit')
+def teens_course_deposit():
+    return render_template('teens_deposit.html')
+
+@app.route('/teens/courses/credit')
+def teens_course_credit():
+    return render_template('teens_credit.html')
+
+@app.route('/teens/courses/banking')
+def teens_course_banking():
+    return render_template('teens_banking.html')
+
+@app.route('/teens/courses/marketing')
+def teens_course_marketing():
+    return render_template('teens_marketing.html')
+
+@app.route('/teens/courses/pricing')
+def teens_course_pricing():
+    return render_template('teens_pricing.html')
+
+@app.route('/teens/courses/saving')
+def teens_course_saving():
+    return render_template('teens_saving.html')
+
+@app.route('/teens/courses/investing')
+def teens_course_investing():
+    return render_template('teens_investing.html')
+
+@app.route('/teens/courses/pyramid')
+def teens_course_pyramid():
+    return render_template('teens_pyramid.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)

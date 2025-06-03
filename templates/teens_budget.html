@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinWise - Як планувати бюджет (доходи/витрати)</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Навігація -->
+    <nav class="bg-white shadow-md py-4">
+        <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-book text-2xl text-purple-600"></i>
+                <h1 class="text-2xl font-bold text-purple-700">FinWise</h1>
+            </div>
+            <div class="space-x-6">
+                <a href="/" class="text-gray-600 hover:text-purple-600">Головна</a>
+                <a href="/teens" class="text-gray-600 hover:text-purple-600">Підлітки</a>
+                <a href="/tools" class="text-gray-600 hover:text-purple-600">Інструменти</a>
+                <a href="/contact" class="text-gray-600 hover:text-purple-600">Контакти</a>
+            </div>
+            <a href="/get-started" class="bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-800 transition-colors">Почати навчання</a>
+        </div>
+    </nav>
+
+    <!-- Заголовок -->
+    <header class="bg-gradient-to-r from-purple-600 to-purple-900 text-white py-8 text-center">
+        <h1 class="text-3xl md:text-4xl font-bold">Як планувати бюджет (доходи/витрати)</h1>
+    </header>
+
+    <!-- Контент -->
+    <section class="max-w-4xl mx-auto px-4 py-12">
+        <h2 class="text-2xl font-semibold text-purple-700 mb-4">Основи бюджетування</h2>
+        <p class="text-gray-600 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        
+        <h2 class="text-2xl font-semibold text-purple-700 mb-4">Як визначити доходи</h2>
+        <p class="text-gray-600 mb-4">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        
+        <h2 class="text-2xl font-semibold text-purple-700 mb-4">Контроль витрат</h2>
+        <p class="text-gray-600 mb-4">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+    </section>
+
+    <!-- Кнопки -->
+    <section class="max-w-4xl mx-auto px-4 py-6 flex justify-between">
+        <a href="/teens" class="bg-gray-500 text-white py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors">Назад</a>
+        <a href="/teens/courses/budget/test" class="bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-800 transition-colors">Пройти тест</a>
+    </section>
+
+    <!-- Футер -->
+    <footer class="bg-purple-900 text-white text-center py-6">
+        <p>© 2025 FinWise. Усі права захищено.</p>
+        <div class="mt-2 space-x-4">
+            <a href="/privacy" class="text-gray-300 hover:text-white">Політика конфіденційності</a>
+            <a href="/terms" class="text-gray-300 hover:text-white">Умови використання</a>
+            <a href="/contact" class="text-gray-300 hover:text-white">Контакти</a>
+        </div>
+    </footer>
+</body>
+</html>
