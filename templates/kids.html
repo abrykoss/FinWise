@@ -4,18 +4,49 @@
     <meta charset="UTF-8">
     <title>Курс для дітей</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .video-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        video {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+        }
+        @media (max-width: 768px) {
+            .video-container {
+                max-width: 90%;
+            }
+        }
+        #material h2 {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <header>
         <h1>Курс з фінансової грамотності для дітей</h1>
+        <div class="video-container">
+            <video controls>
+                <source src="{{ url_for('static', filename='videos/placeholder.mp4') }}" type="video/mp4">
+                Ваш браузер не підтримує відтворення відео.
+            </video>
+        </div>
     </header>
 
     <main>
         <section id="material">
             <h2>Освітній матеріал</h2>
             <div id="materials-content" class="materials-grid"></div>
-            <button class="btn" onclick="startTest()">Розпочати тест</button>
+            <button class="btn" onclick="startTest()" style="margin: auto; display: block;">Розпочати тест</button>
         </section>
+
 
         <section id="test" style="display: none;">
             <h2>Тест</h2>
