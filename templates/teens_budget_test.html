@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinWise - Тест: Як планувати бюджет</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Навігація -->
+    <nav class="bg-white shadow-md py-4">
+        <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-book text-2xl text-purple-600"></i>
+                <h1 class="text-2xl font-bold text-purple-700">FinWise</h1>
+            </div>
+            <div class="space-x-6">
+                <a href="/" class="text-gray-600 hover:text-purple-600">Головна</a>
+                <a href="/teens" class="text-gray-600 hover:text-purple-600">Підлітки</a>
+                <a href="/tools" class="text-gray-600 hover:text-purple-600">Інструменти</a>
+                <a href="/contact" class="text-gray-600 hover:text-purple-600">Контакти</a>
+            </div>
+            <a href="/get-started" class="bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-800 transition-colors">Почати навчання</a>
+        </div>
+    </nav>
+
+    <!-- Заголовок -->
+    <header class="bg-gradient-to-r from-purple-600 to-purple-900 text-white py-8 text-center">
+        <h1 class="text-3xl md:text-4xl font-bold">Тест: Як планувати бюджет (доходи/витрати)</h1>
+    </header>
+
+    <!-- Форма тесту -->
+    <section class="max-w-4xl mx-auto px-4 py-12">
+        <form id="quiz-form" class="space-y-6">
+            <!-- Питання 1 -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-lg font-semibold text-purple-700 mb-2">1. Що є основою бюджетування?</h3>
+                <label class="block">
+                    <input type="radio" name="q1" value="a" class="mr-2"> а) Витрати без планування
+                </label>
+                <label class="block">
+                    <input type="radio" name="q1" value="b" class="mr-2"> б) Планування доходів і витрат
+                </label>
+                <label class="block">
+                    <input type="radio" name="q1" value="c" class="mr-2"> в) Ігнорування доходів
+                </label>
+            </div>
+
+            <!-- Питання 2 -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-lg font-semibold text-purple-700 mb-2">2. Як визначити доходи?</h3>
+                <label class="block">
+                    <input type="radio" name="q2" value="a" class="mr-2"> а) Тільки за зарплатою
+                </label>
+                <label class="block">
+                    <input type="radio" name="q2" value="b" class="mr-2"> б) Включаючи всі джерела (зарплата, подарунки)
+                </label>
+                <label class="block">
+                    <input type="radio" name="q2" value="c" class="mr-2"> в) Не визначати
+                </label>
+            </div>
+
+            <!-- Питання 3 -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-lg font-semibold text-purple-700 mb-2">3. Що робити з надлишковими витратами?</h3>
+                <label class="block">
+                    <input type="radio" name="q3" value="a" class="mr-2"> а) Ігнорувати
+                </label>
+                <label class="block">
+                    <input type="radio" name="q3" value="b" class="mr-2"> б) Зменшити витрати
+                </label>
+                <label class="block">
+                    <input type="radio" name="q3" value="c" class="mr-2"> в) Взяти кредит
+                </label>
+            </div>
+
+            <!-- Питання 4 -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-lg font-semibold text-purple-700 mb-2">4. Як часто оновлювати бюджет?</h3>
+                <label class="block">
+                    <input type="radio" name="q4" value="a" class="mr-2"> а) Раз на рік
+                </label>
+                <label class="block">
+                    <input type="radio" name="q4" value="b" class="mr-2"> б) Щомісяця
+                </label>
+                <label class="block">
+                    <input type="radio" name="q4" value="c" class="mr-2"> в) Ніколи
+                </label>
+            </div>
+
+            <!-- Питання 5 -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-lg font-semibold text-purple-700 mb-2">5. Що важливе для заощаджень?</h3>
+                <label class="block">
+                    <input type="radio" name="q5" value="a" class="mr-2"> а) Витрачати все
+                </label>
+                <label class="block">
+                    <input type="radio" name="q5" value="b" class="mr-2"> б) Відкладати частину доходів
+                </label>
+                <label class="block">
+                    <input type="radio" name="q5" value="c" class="mr-2"> в) Ігнорувати заощадження
+                </label>
+            </div>
+        </form>
+    </section>
+
+    <!-- Кнопки -->
+    <section class="max-w-4xl mx-auto px-4 py-6 flex justify-between">
+        <a href="/teens/courses/budget" class="bg-gray-500 text-white py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors">Назад</a>
+        <button type="submit" form="quiz-form" class="bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-800 transition-colors">Надіслати</button>
+    </section>
+
+    <!-- Футер -->
+    <footer class="bg-purple-900 text-white text-center py-6">
+        <p>© 2025 FinWise. Усі права захищено.</p>
+        <div class="mt-2 space-x-4">
+            <a href="/privacy" class="text-gray-300 hover:text-white">Політика конфіденційності</a>
+            <a href="/terms" class="text-gray-300 hover:text-white">Умови використання</a>
+            <a href="/contact" class="text-gray-300 hover:text-white">Контакти</a>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('quiz-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Відповіді надіслано!');
+        });
+    </script>
+</body>
+</html>
