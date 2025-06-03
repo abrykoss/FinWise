@@ -2,17 +2,80 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <title>Навчання для дітей</title>
+    <title>Курс для дітей</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <h1>Курс з фінансової грамотності для дітей</h1>
-    <p>Тут буде освітній контент для дітей.</p>
-    <h2>Тест</h2>
-    <p>Тут буде тест з автоматичною перевіркою.</p>
+    <header>
+        <h1>Курс з фінансової грамотності для дітей</h1>
+    </header>
+
+    <main>
+        <section id="material">
+            <h2>Освітній матеріал</h2>
+            <div id="materials-content" class="materials-grid"></div>
+            <button class="btn" onclick="startTest()">Розпочати тест</button>
+        </section>
+
+        <section id="test" style="display: none;">
+            <h2>Тест</h2>
+            <form id="quiz-form"></form>
+            <button class="btn" onclick="submitQuiz()">Завершити тест</button>
+            <p id="result"></p>
+            <button class="btn" id="back-to-main" style="display: none;" onclick="goBack()">Повернутись на головну</button>
+        </section>
+    </main>
+
     <script>
-        // Приклад збереження прогресу
-        localStorage.setItem('kids_progress', 'Розпочато курс');
+        fetch('/static/materialskids.txt')
+            .then(response => response.text())
+            .then(text => {
+                const sections = text.split('###').filter(section => section.trim() !== '');
+                const container = document.getElementById('materials-content');
+                sections.forEach(section => {
+                    const [title, ...content] = section.trim().split('\n');
+                    const div = document.createElement('div');
+                    div.className = 'course-card';
+                    div.innerHTML = `<h3>${title}</h3><p>${content.join('<br>')}</p>`;
+                    container.appendChild(div);
+                });
+            })
+            .catch(error => console.error('Помилка завантаження матеріалів:', error));
+
+        fetch('/static/quizkids.json')
+            .then(response => response.json())
+            .then(quizData => {
+                const form = document.getElementById('quiz-form');
+                quizData.forEach((q, index) => {
+                    form.innerHTML += `<p>${index + 1}. ${q.question}</p>`;
+                    q.options.forEach(option => {
+                        form.innerHTML += `<label><input type="radio" name="q${index + 1}" value="${option[0]}"> ${option}</label><br>`;
+                    });
+                });
+                window.quizData = quizData;
+            })
+            .catch(error => console.error('Помилка завантаження тестів:', error));
+
+        function startTest() {
+            document.getElementById('material').style.display = 'none';
+            document.getElementById('test').style.display = 'block';
+        }
+
+        function submitQuiz() {
+            const form = document.getElementById('quiz-form');
+            let score = 0;
+            window.quizData.forEach((q, index) => {
+                const selected = form.querySelector(`input[name="q${index + 1}"]:checked`)?.value;
+                if (selected === q.answer) score++;
+            });
+            const percentage = (score / window.quizData.length) * 100;
+            document.getElementById('result').innerText = `Ви набрали ${percentage}%`;
+            document.getElementById('back-to-main').style.display = 'block';
+        }
+
+        function goBack() {
+            window.location.href = '/';
+        }
     </script>
 </body>
 </html>
