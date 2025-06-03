@@ -2,19 +2,182 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <title>Навчання для підлітків</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinWise - Курс для підлітків</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
-<body>
-    <h1>Навчання для підлітків</h1>
-    <ul>
-        <li><a href="/teens/courses">Міні-курси</a></li>
-        <li><a href="/teens/quizzes">Вікторини</a></li>
-        <li><a href="/teens/budget">Симуляція бюджету</a></li>
-        <li><a href="/teens/ratings">Рейтинги та бейджі</a></li>
-        <li><a href="/teens/decision">Симуляція "Фінансове рішення"</a></li>
-        <li><a href="/teens/route">Міні-гра "Фінансовий маршрут"</a></li>
-        <li><a href="/teens/calculators">Симуляція "Розрахунок виплат по кредиту"</a></li>
-    </ul>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Навігація -->
+    <nav class="bg-white shadow-md py-4">
+        <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-book text-2xl text-purple-600"></i>
+                <h1 class="text-2xl font-bold text-purple-700">FinWise</h1>
+            </div>
+            <div class="space-x-6">
+                <a href="/" class="text-gray-600 hover:text-purple-600">Головна</a>
+                <a href="/teens" class="text-gray-600 hover:text-purple-600">Підлітки</a>
+                <a href="/tools" class="text-gray-600 hover:text-purple-600">Інструменти</a>
+                <a href="/contact" class="text-gray-600 hover:text-purple-600">Контакти</a>
+            </div>
+            <a href="/get-started" class="bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-800 transition-colors">Почати навчання</a>
+        </div>
+    </nav>
+
+    <!-- Заголовок -->
+    <header class="bg-gradient-to-r from-purple-600 to-purple-900 text-white py-16 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Курс для підлітків (14–17 років)</h1>
+        <p class="text-lg max-w-3xl mx-auto">Мета: готувати до самостійного життя та критичного мислення про гроші через практичні уроки та тести.</p>
+    </header>
+
+    <!-- Симуляції -->
+    <section class="max-w-7xl mx-auto px-4 py-8">
+        <h2 class="text-3xl font-semibold text-purple-700 text-center mb-6">Симуляції</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div class="flex items-center space-x-3 mb-4">
+                    <i class="fas fa-map-signs text-4xl text-purple-600"></i>
+                    <h3 class="text-xl font-semibold text-purple-700">Фінансовий маршрут</h3>
+                </div>
+                <p class="text-gray-600 mb-4">Пройди інтерактивну гру для практики фінансових рішень.</p>
+                <a href="/teens/route" class="btn w-full inline-block bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-800 transition-colors text-center">Грати</a>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div class="flex items-center space-x-3 mb-4">
+                    <i class="fas fa-calculator text-4xl text-purple-600"></i>
+                    <h3 class="text-xl font-semibold text-purple-700">Калькулятори фінансів</h3>
+                </div>
+                <p class="text-gray-600 mb-4">Розрахуй кредити та депозити для кращого розуміння фінансів.</p>
+                <a href="/teens/calculators" class="btn w-full inline-block bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-800 transition-colors text-center">Спробувати</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Прогрес -->
+    <section class="max-w-7xl mx-auto px-4 py-6">
+        <div class="bg-white p-6 rounded-xl shadow-lg">
+            <h2 class="text-xl font-semibold text-purple-700 mb-2">Ваш прогрес</h2>
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="text-center md:text-left">
+                    <p class="text-lg">Завершено: <span class="font-bold text-purple-600">0%</span></p>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5 mt-2">
+                        <div class="bg-purple-600 h-2.5 rounded-full" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="text-center md:text-right">
+                    <p class="text-lg">Загальна оцінка: <span class="font-bold text-purple-600">0/100</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Теми курсу -->
+    <section class="max-w-7xl mx-auto px-4 py-12">
+        <h2 class="text-3xl font-semibold text-purple-700 text-center mb-6">Теми курсу</h2>
+        <ul class="space-y-4">
+            <li class="bg-white p-4 rounded-lg shadow-md flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <i class="fas fa-wallet text-2xl text-purple-600"></i>
+                    <span class="text-lg">Як планувати бюджет (доходи/витрати)</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm text-gray-500">Оцінка за тест: 0/10</span>
+                    <a href="/teens/courses/budget" class="btn inline-block bg-purple-600 text-white py-1 px-3 rounded hover:bg-purple-800 transition-colors">Перейти</a>
+                </li>
+            <li class="bg-white p-4 rounded-lg shadow-md flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <i class="fas fa-file-invoice-dollar text-2xl text-purple-600"></i>
+                    <span class="text-lg">Що таке податки (дуже базово)</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm text-gray-500">Оцінка за тест: 0/10</span>
+                    <a href="/teens/courses/taxes" class="btn inline-block bg-purple-600 text-white py-1 px-3 rounded hover:bg-purple-800 transition-colors">Перейти</a>
+                </li>
+            <li class="bg-white p-4 rounded-lg shadow-md flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <i class="fas fa-piggy-bank text-2xl text-purple-600"></i>
+                    <span class="text-lg">Що таке депозит, відсотки, інфляція</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm text-gray-500">Оцінка за тест: 0/10</span>
+                    <a href="/teens/courses/deposit" class="btn inline-block bg-purple-600 text-white py-1 px-3 rounded hover:bg-purple-800 transition-colors">Перейти</a>
+                </li>
+            <li class="bg-white p-4 rounded-lg shadow-md flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <i class="fas fa-hand-holding-usd text-2xl text-purple-600"></i>
+                    <span class="text-lg">Кредити, позики і “життя в борг”</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm text-gray-500">Оцінка за тест: 0/10</span>
+                    <a href="/teens/courses/credit" class="btn inline-block bg-purple-600 text-white py-1 px-3 rounded hover:bg-purple-800 transition-colors">Перейти</a>
+                </li>
+            <li class="bg-white p-4 rounded-lg shadow-md flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <i class="fas fa-lock text-2xl text-purple-600"></i>
+                    <span class="text-lg">Онлайн-банкінг і безпека</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm text-gray-500">Оцінка за тест: 0/10</span>
+                    <a href="/teens/courses/banking" class="btn inline-block bg-purple-600 text-white py-1 px-3 rounded hover:bg-purple-800 transition-colors">Перейти</a>
+                </li>
+            <li class="bg-white p-4 rounded-lg shadow-md flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <i class="fas fa-bullhorn text-2xl text-purple-600"></i>
+                    <span class="text-lg">Реклама і фінансові маніпуляції</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm text-gray-500">Оцінка за тест: 0/10</span>
+                    <a href="/teens/courses/marketing" class="btn inline-block bg-purple-600 text-white py-1 px-3 rounded hover:bg-purple-800 transition-colors">Перейти</a>
+                </li>
+            <li class="bg-white p-4 rounded-lg shadow-md flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <i class="fas fa-tag text-2xl text-purple-600"></i>
+                    <span class="text-lg">Як читати цінники, знижки, маркетингові трюки</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm text-gray-500">Оцінка за тест: 0/10</span>
+                    <a href="/teens/courses/pricing" class="btn inline-block bg-purple-600 text-white py-1 px-3 rounded hover:bg-purple-800 transition-colors">Перейти</a>
+                </li>
+            <li class="bg-white p-4 rounded-lg shadow-md flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <i class="fas fa-coins text-2xl text-purple-600"></i>
+                    <span class="text-lg">Як накопичити на мету</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm text-gray-500">Оцінка за тест: 0/10</span>
+                    <a href="/teens/courses/saving" class="btn inline-block bg-purple-600 text-white py-1 px-3 rounded hover:bg-purple-800 transition-colors">Перейти</a>
+                </li>
+            <li class="bg-white p-4 rounded-lg shadow-md flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <i class="fas fa-chart-line text-2xl text-purple-600"></i>
+                    <span class="text-lg">Інвестування: просте пояснення</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm text-gray-500">Оцінка за тест: 0/10</span>
+                    <a href="/teens/courses/investing" class="btn inline-block bg-purple-600 text-white py-1 px-3 rounded hover:bg-purple-800 transition-colors">Перейти</a>
+                </li>
+            <li class="bg-white p-4 rounded-lg shadow-md flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <i class="fas fa-exclamation-triangle text-2xl text-purple-600"></i>
+                    <span class="text-lg">Як не попасти в фінансову піраміду</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm text-gray-500">Оцінка за тест: 0/10</span>
+                    <a href="/teens/courses/pyramid" class="btn inline-block bg-purple-600 text-white py-1 px-3 rounded hover:bg-purple-800 transition-colors">Перейти</a>
+                </li>
+        </ul>
+    </section>
+
+    <!-- Футер -->
+    <footer class="bg-purple-900 text-white text-center py-6">
+        <p>© 2025 FinWise. Усі права захищено.</p>
+        <div class="mt-2 space-x-4">
+            <a href="/privacy" class="text-gray-300 hover:text-white">Політика конфіденційності</a>
+            <a href="/terms" class="text-gray-300 hover:text-white">Умови використання</a>
+            <a href="/contact" class="text-gray-300 hover:text-white">Контакти</a>
+        </div>
+    </footer>
 </body>
 </html>
