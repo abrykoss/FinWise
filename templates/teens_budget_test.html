@@ -122,16 +122,25 @@
             q5: document.querySelector('input[name="q5"]:checked')?.value
         };
 
+        if (Object.values(answers).some(answer => !answer)) {
+            alert('Будь ласка, дайте відповідь на всі питання!');
+            return;
+        }
+
         // Відправка результатів на сервер
-        fetch('/submit-budget-test', {
+        fetch('/submit-test/budget', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(answers)
         })
         .then(response => response.json())
         .then(data => {
+            if (data.error) {
+                alert(data.error);
+                return;
+            }
             alert(`Ваш результат: ${data.score}/10 балів!`);
-            window.location.href = '/teens';  // Повернення на сторінку курсу
+            window.location.href = '/teens';
         })
         .catch(error => {
             console.error('Error:', error);
@@ -141,10 +150,9 @@
 </script>
 
     <!-- Додано кнопку "Повернутись до тем" -->
-<section class="max-w-4xl mx-auto px-4 py-6 flex justify-between">
-    <a href="/teens" class="bg-gray-500 text-white py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors">Повернутись до тем</a>
-    <a href="/teens/courses/budget/test" class="bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-800 transition-colors">Пройти тест</a>
-</section>
+    <section class="max-w-4xl mx-auto px-4 py-6 flex justify-between">
+        <a href="/teens" class="bg-gray-500 text-white py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors">Повернутись до тем</a>
+    </section>
 
     <!-- Футер -->
     <footer class="bg-purple-900 text-white text-center py-6">
@@ -155,12 +163,5 @@
             <a href="/contact" class="text-gray-300 hover:text-white">Контакти</a>
         </div>
     </footer>
-
-    <script>
-        document.getElementById('quiz-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Відповіді надіслано!');
-        });
-    </script>
 </body>
 </html>

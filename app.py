@@ -3,12 +3,17 @@ from flask import Flask, render_template, session, redirect, url_for, request, j
 app = Flask(__name__)
 app.secret_key = 'your_secret_key_here'  # Додайте реальний секретний ключ
 
-
 # Головна сторінка з вибором режиму
 @app.route('/')
 def index():
     return render_template('index.html')
 
+# Словник із правильними відповідями для кожного тесту
+CORRECT_ANSWERS = {
+    'budget': {'q1': 'b', 'q2': 'b', 'q3': 'b', 'q4': 'b', 'q5': 'b'},
+    'taxes': {'q1': 'b', 'q2': 'b', 'q3': 'b', 'q4': 'b', 'q5': 'b'},  
+    'deposit': {'q1': 'c', 'q2': 'b', 'q3': 'b', 'q4': 'c', 'q5': 'c'},
+}
 
 # Режим для підлітків
 @app.route('/teens')
@@ -35,7 +40,7 @@ def teens():
     # Розрахунок прогресу
     completed = session['progress']['completed_topics']
     total_topics = len(session['progress']['topics'])
-    progress_percentage = round((completed / total_topics) * 100)
+    progress_percentage = round((completed / total_topics) * 100) if total_topics > 0 else 0
     total_score = session['progress']['total_score']
 
     return render_template(
@@ -47,27 +52,35 @@ def teens():
 
 
 # Обробка результатів тесту
-@app.route('/submit-budget-test', methods=['POST'])
-def submit_budget_test():
+@app.route('/submit-test/<topic>', methods=['POST'])
+def submit_test(topic):
+    if topic not in CORRECT_ANSWERS:
+        return jsonify({'error': 'Невірна тема'}), 400
+
     data = request.json
     score = 0
-    correct_answers = {
-        'q1': 'b', 'q2': 'b', 'q3': 'b', 'q4': 'b', 'q5': 'b'
-    }
+    correct_answers = CORRECT_ANSWERS[topic]
 
     # Перевірка відповідей
     for q, answer in data.items():
         if answer == correct_answers.get(q):
             score += 2
 
-    # Оновлення прогресу
-    if not session['progress']['topics']['budget']['completed']:
+    # Якщо тест уже був пройдений, віднімаємо попередню оцінку з total_score
+    if session['progress']['topics'][topic]['completed']:
+        previous_score = session['progress']['topics'][topic]['score']
+        session['progress']['total_score'] -= previous_score
+    else:
+        # Якщо тест проходиться вперше, збільшуємо кількість завершених тем
         session['progress']['completed_topics'] += 1
-        session['progress']['total_score'] += score
-        session.modified = True
 
-    session['progress']['topics']['budget']['completed'] = True
-    session['progress']['topics']['budget']['score'] = score
+    session['progress']['topics'][topic]['completed'] = True
+    session['progress']['topics'][topic]['score'] = score
+    session['progress']['total_score'] += score
+
+    if session['progress']['total_score'] < 0:
+        session['progress']['total_score'] = 0
+
     session.modified = True
 
     return jsonify({
@@ -161,13 +174,13 @@ def teens_course_pyramid():
 def teens_budget_test():
     return render_template('teens_budget_test.html')
 
-# @app.route('/teens/courses/taxes/test')
-# def teens_course_taxes():
-#     return render_template('teens_taxes.html')
+@app.route('/teens/courses/taxes/test')
+def teens_taxes_test():
+    return render_template('teens_taxes_test.html')
 
-# @app.route('/teens/courses/deposit/test')
-# def teens_course_deposit():
-#     return render_template('teens_deposit.html')
+@app.route('/teens/courses/deposit/test')
+def teens_deposit_test():
+    return render_template('teens_deposit_test.html')
 
 # @app.route('/teens/courses/credit/test')
 # def teens_course_credit():
