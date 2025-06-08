@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinWise - Онлайн-банкінг і безпека</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Навігація -->
+    <nav class="bg-white shadow-md py-4">
+        <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-book text-2xl text-purple-600"></i>
+                <h1 class="text-2xl font-bold text-purple-700">FinWise</h1>
+            </div>
+            <div class="space-x-6">
+                <a href="/" class="text-gray-600 hover:text-purple-600">Головна</a>
+                <a href="/teens" class="text-gray-600 hover:text-purple-600">Підлітки</a>
+                <a href="/tools" class="text-gray-600 hover:text-purple-600">Інструменти</a>
+                <a href="/contact" class="text-gray-600 hover:text-purple-600">Контакти</a>
+            </div>
+            <a href="/get-started" class="bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-800 transition-colors">Почати навчання</a>
+        </div>
+    </nav>
+
+    <!-- Заголовок -->
+    <header class="bg-gradient-to-r from-purple-600 to-purple-900 text-white py-8 text-center">
+        <h1 class="text-3xl md:text-4xl font-bold">Онлайн-банкінг і безпека</h1>
+    </header>
+
+<section class="max-w-4xl mx-auto px-4 py-12">
+    <h2 class="text-2xl font-semibold text-purple-700 mb-4">Що таке онлайн-банкінг?</h2>
+    <p class="text-gray-600 mb-4">Онлайн-банкінг — це доступ до свого банківського рахунку через інтернет або мобільний додаток.</p>
+    <p class="text-gray-600 mb-4">Ви можете:</p>
+    <ul class="list-disc pl-6 text-gray-600 mb-4">
+        <li>перевіряти баланс і витрати;</li>
+        <li>оплачувати покупки та послуги;</li>
+        <li>переказувати гроші іншим людям;</li>
+        <li>відкривати депозити або брати кредити.</li>
+    </ul>
+
+
+    <h2 class="text-2xl font-semibold text-purple-700 mb-4">Переваги онлайн-банкінгу</h2>
+    <ul class="list-disc pl-6 text-gray-600 mb-4">
+        <li>Зручно: усе в телефоні або на комп’ютері</li>
+        <li>Швидко: перекази за кілька секунд</li>
+        <li>Без черг і в будь-який час</li>
+    </ul>
+
+    <h2 class="text-2xl font-semibold text-purple-700 mb-4">Основні правила безпеки</h2>
+    <p class="text-gray-600 mb-4">1. Не повідомляйте нікому свої паролі або PIN-коди.</p>
+    <p class="text-gray-600 mb-4">Навіть якщо хтось представився “працівником банку” — справжній банк ніколи цього не питає.</p> 
+    <p class="text-gray-600 mb-4">2. Використовуйте складні паролі і двофакторну автентифікацію (SMS або підтвердження в додатку).</p>
+    <p class="text-gray-600 mb-4">3. Не переходьте за підозрілими посиланнями з SMS, email або соцмереж.</p>
+    <p class="text-gray-600 mb-4">4. Використовуйте тільки офіційний додаток банку. Не завантажуйте “копії” з незнайомих сайтів.</p>
+    
+    <h2 class="text-2xl font-semibold text-purple-700 mb-4">Що таке фішинг?</h2>
+    <p class="text-gray-600 mb-4">Фішинг — це шахрайство, коли зловмисники намагаються обманом отримати ваші банківські дані.</p>
+    <p class="text-gray-600 mb-4">Приклад: вам надсилають фейкове SMS “Ваша картка заблокована. Перейдіть за посиланням...”</p>
+    <p class="text-gray-600 mb-4">Ніколи не вводьте особисті дані на незрозумілих сайтах.</p>
+</section>
+
+    <!-- Кнопки -->
+    <section class="max-w-4xl mx-auto px-4 py-6 flex justify-between">
+        <a href="/teens" class="bg-gray-500 text-white py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors">Назад</a>
+        <a href="/teens/courses/banking/test" class="bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-800 transition-colors">Пройти тест</a>
+    </section>
+
+    <!-- Футер -->
+    <footer class="bg-purple-900 text-white text-center py-6">
+        <p>© 2025 FinWise. Усі права захищено.</p>
+        <div class="mt-2 space-x-4">
+            <a href="/privacy" class="text-gray-300 hover:text-white">Політика конфіденційності</a>
+            <a href="/terms" class="text-gray-300 hover:text-white">Умови використання</a>
+            <a href="/contact" class="text-gray-300 hover:text-white">Контакти</a>
+        </div>
+    </footer>
+</body>
+</html>

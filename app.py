@@ -13,6 +13,8 @@ CORRECT_ANSWERS = {
     'budget': {'q1': 'b', 'q2': 'b', 'q3': 'b', 'q4': 'b', 'q5': 'b'},
     'taxes': {'q1': 'b', 'q2': 'b', 'q3': 'b', 'q4': 'b', 'q5': 'b'},  
     'deposit': {'q1': 'c', 'q2': 'b', 'q3': 'b', 'q4': 'c', 'q5': 'c'},
+    'credit': {'q1': 'b', 'q2': 'c', 'q3': 'b', 'q4': 'b', 'q5': 'c'},
+    'banking': {'q1': 'b', 'q2': 'b', 'q3': 'c', 'q4': 'c', 'q5': 'c'},
 }
 
 # Режим для підлітків
@@ -182,13 +184,13 @@ def teens_taxes_test():
 def teens_deposit_test():
     return render_template('teens_deposit_test.html')
 
-# @app.route('/teens/courses/credit/test')
-# def teens_course_credit():
-#     return render_template('teens_credit.html')
+@app.route('/teens/courses/credit/test')
+def teens_credit_test():
+    return render_template('teens_credit_test.html')
 
-# @app.route('/teens/courses/banking/test')
-# def teens_course_banking():
-#     return render_template('teens_banking.html')
+@app.route('/teens/courses/banking/test')
+def teens_banking_test():
+    return render_template('teens_banking_test.html')
 
 # @app.route('/teens/courses/marketing/test')
 # def teens_course_marketing():
