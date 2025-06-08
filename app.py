@@ -1,11 +1,83 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, session, redirect, url_for, request, jsonify
 
 app = Flask(__name__)
+app.secret_key = 'your_secret_key_here'  # Додайте реальний секретний ключ
+
 
 # Головна сторінка з вибором режиму
 @app.route('/')
 def index():
     return render_template('index.html')
+
+
+# Режим для підлітків
+@app.route('/teens')
+def teens():
+    # Ініціалізація прогресу в сесії
+    if 'progress' not in session:
+        session['progress'] = {
+            'completed_topics': 0,
+            'total_score': 0,
+            'topics': {
+                'budget': {'completed': False, 'score': 0},
+                'taxes': {'completed': False, 'score': 0},
+                'deposit': {'completed': False, 'score': 0},
+                'credit': {'completed': False, 'score': 0},
+                'banking': {'completed': False, 'score': 0},
+                'marketing': {'completed': False, 'score': 0},
+                'pricing': {'completed': False, 'score': 0},
+                'saving': {'completed': False, 'score': 0},
+                'investing': {'completed': False, 'score': 0},
+                'pyramid': {'completed': False, 'score': 0},
+            }
+        }
+
+    # Розрахунок прогресу
+    completed = session['progress']['completed_topics']
+    total_topics = len(session['progress']['topics'])
+    progress_percentage = round((completed / total_topics) * 100)
+    total_score = session['progress']['total_score']
+
+    return render_template(
+        'teens.html',
+        progress_percentage=progress_percentage,
+        total_score=total_score,
+        topics=session['progress']['topics']
+    )
+
+
+# Обробка результатів тесту
+@app.route('/submit-budget-test', methods=['POST'])
+def submit_budget_test():
+    data = request.json
+    score = 0
+    correct_answers = {
+        'q1': 'b', 'q2': 'b', 'q3': 'b', 'q4': 'b', 'q5': 'b'
+    }
+
+    # Перевірка відповідей
+    for q, answer in data.items():
+        if answer == correct_answers.get(q):
+            score += 2
+
+    # Оновлення прогресу
+    if not session['progress']['topics']['budget']['completed']:
+        session['progress']['completed_topics'] += 1
+        session['progress']['total_score'] += score
+        session.modified = True
+
+    session['progress']['topics']['budget']['completed'] = True
+    session['progress']['topics']['budget']['score'] = score
+    session.modified = True
+
+    return jsonify({
+        'score': score,
+        'total_score': session['progress']['total_score'],
+        'completed_topics': session['progress']['completed_topics']
+    })
+
+
+
 
 # Режим для дітей
 @app.route('/kids')
@@ -13,9 +85,7 @@ def kids():
     return render_template('kids.html')
 
 # Режим для підлітків
-@app.route('/teens')
-def teens():
-    return render_template('teens.html')
+
 
 # Додаткові маршрути для підлітків
 @app.route('/teens/courses')

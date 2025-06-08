@@ -106,11 +106,45 @@
         </form>
     </section>
 
-    <!-- Кнопки -->
-    <section class="max-w-4xl mx-auto px-4 py-6 flex justify-between">
-        <a href="/teens/courses/budget" class="bg-gray-500 text-white py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors">Назад</a>
-        <button type="submit" form="quiz-form" class="bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-800 transition-colors">Надіслати</button>
-    </section>
+<!-- Кнопки -->
+<section class="max-w-4xl mx-auto px-4 py-6 flex justify-between">
+    <a href="/teens/courses/budget" class="bg-gray-500 text-white py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors">Назад</a>
+    <button onclick="submitQuiz()" class="bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-800 transition-colors">Надіслати</button>
+</section>
+
+<script>
+    function submitQuiz() {
+        const answers = {
+            q1: document.querySelector('input[name="q1"]:checked')?.value,
+            q2: document.querySelector('input[name="q2"]:checked')?.value,
+            q3: document.querySelector('input[name="q3"]:checked')?.value,
+            q4: document.querySelector('input[name="q4"]:checked')?.value,
+            q5: document.querySelector('input[name="q5"]:checked')?.value
+        };
+
+        // Відправка результатів на сервер
+        fetch('/submit-budget-test', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(answers)
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(`Ваш результат: ${data.score}/10 балів!`);
+            window.location.href = '/teens';  // Повернення на сторінку курсу
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Сталася помилка при відправці результатів');
+        });
+    }
+</script>
+
+    <!-- Додано кнопку "Повернутись до тем" -->
+<section class="max-w-4xl mx-auto px-4 py-6 flex justify-between">
+    <a href="/teens" class="bg-gray-500 text-white py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors">Повернутись до тем</a>
+    <a href="/teens/courses/budget/test" class="bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-800 transition-colors">Пройти тест</a>
+</section>
 
     <!-- Футер -->
     <footer class="bg-purple-900 text-white text-center py-6">
