@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinWise - Як накопичити на мету</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Навігація -->
+    <nav class="bg-white shadow-md py-4">
+        <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-book text-2xl text-purple-600"></i>
+                <h1 class="text-2xl font-bold text-purple-700">FinWise</h1>
+            </div>
+            <div class="space-x-6">
+                <a href="/" class="text-gray-600 hover:text-purple-600">Головна</a>
+                <a href="/teens" class="text-gray-600 hover:text-purple-600">Підлітки</a>
+                <a href="/tools" class="text-gray-600 hover:text-purple-600">Інструменти</a>
+                <a href="/contact" class="text-gray-600 hover:text-purple-600">Контакти</a>
+            </div>
+            <a href="/get-started" class="bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-800 transition-colors">Почати навчання</a>
+        </div>
+    </nav>
+
+    <!-- Заголовок -->
+    <header class="bg-gradient-to-r from-purple-600 to-purple-900 text-white py-8 text-center">
+        <h1 class="text-3xl md:text-4xl font-bold">Як накопичити на мету</h1>
+    </header>
+
+<section class="max-w-4xl mx-auto px-4 py-12">
+    <h2 class="text-2xl font-semibold text-purple-700 mb-4">Що означає "накопичити на мету"?</h2>
+    <p class="text-gray-600 mb-4">Це коли ти відкладаєш гроші поступово, щоб з часом мати достатньо для чогось важливого: новий телефон, подорож, подарунок, курси тощо.</p>
+
+    <h2 class="text-2xl font-semibold text-purple-700 mb-4">Крок 1: Обери мету</h2>
+    <p class="text-gray-600 mb-4">Визнач, на що саме ти хочеш накопичити. Мета має бути:</p>
+    <ul class="list-disc pl-6 text-gray-600 mb-4">
+        <li>Конкретною (наприклад, «бездротові навушники» — краще, ніж «щось круте»)</li>
+        <li>Реальною — ти маєш змогу досягти її за певний час</li>
+        <li>Чітко оціненою — дізнайся, скільки це коштує</li>
+    </ul>
+
+    <h2 class="text-2xl font-semibold text-purple-700 mb-4">Крок 2: Розрахуй, скільки треба відкладати</h2>
+    <p class="text-gray-600 mb-4">Поділи суму на кількість тижнів або місяців, за які хочеш досягти мети.</p>
+    <p class="text-gray-600 mb-4">Приклад:</p>
+    <p class="text-gray-600 mb-4">Твоя мета — купити навушники за 1200 грн.</p>
+    <p class="text-gray-600 mb-4">Ти хочеш зробити це за 4 місяці.</p>
+    <p class="text-gray-600 mb-4">→ Потрібно відкладати по 300 грн щомісяця (або 75 грн щотижня).</p>
+
+    <h2 class="text-2xl font-semibold text-purple-700 mb-4">Крок 3: Створи "скарбничку"</h2>
+    <p class="text-gray-600 mb-4">Це може бути:</p>
+    <ul class="list-disc pl-6 text-gray-600 mb-4">
+        <li>Фізична скарбничка (баночка, конверт)</li>
+        <li>Окремий рахунок в банку чи на картці</li>
+        <li>Фінансовий додаток, де можна відстежувати прогрес</li>
+    </ul>
+
+    <h2 class="text-2xl font-semibold text-purple-700 mb-4">Крок 4: Дотримуйся плану"</h2>
+    <ul class="list-disc pl-6 text-gray-600 mb-4">
+        <li>Відкладай регулярно, навіть невеликі суми</li>
+        <li>Уникай спонтанних витрат — подумай: це важливіше за твою мету?</li>
+        <li>Коли бачиш прогрес — це мотивує</li>
+    </ul>
+
+    <h2 class="text-2xl font-semibold text-purple-700 mb-4">Крок 5: Досягни мету — і порадій!</h2>
+    <p class="text-gray-600 mb-4">Це не просто покупка — це усвідомлений результат твоїх зусиль.</p>
+    <p class="text-gray-600 mb-4">Навичка накопичення — це крок до фінансової незалежності💰</p>
+</section>
+
+    <!-- Кнопки -->
+    <section class="max-w-4xl mx-auto px-4 py-6 flex justify-between">
+        <a href="/teens" class="bg-gray-500 text-white py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors">Назад</a>
+        <a href="/teens/courses/saving/test" class="bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-800 transition-colors">Пройти тест</a>
+    </section>
+
+    <!-- Футер -->
+    <footer class="bg-purple-900 text-white text-center py-6">
+        <p>© 2025 FinWise. Усі права захищено.</p>
+        <div class="mt-2 space-x-4">
+            <a href="/privacy" class="text-gray-300 hover:text-white">Політика конфіденційності</a>
+            <a href="/terms" class="text-gray-300 hover:text-white">Умови використання</a>
+            <a href="/contact" class="text-gray-300 hover:text-white">Контакти</a>
+        </div>
+    </footer>
+</body>
+</html>

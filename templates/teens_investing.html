@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinWise - Інвестування: просте пояснення</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Навігація -->
+    <nav class="bg-white shadow-md py-4">
+        <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-book text-2xl text-purple-600"></i>
+                <h1 class="text-2xl font-bold text-purple-700">FinWise</h1>
+            </div>
+            <div class="space-x-6">
+                <a href="/" class="text-gray-600 hover:text-purple-600">Головна</a>
+                <a href="/teens" class="text-gray-600 hover:text-purple-600">Підлітки</a>
+                <a href="/tools" class="text-gray-600 hover:text-purple-600">Інструменти</a>
+                <a href="/contact" class="text-gray-600 hover:text-purple-600">Контакти</a>
+            </div>
+            <a href="/get-started" class="bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-800 transition-colors">Почати навчання</a>
+        </div>
+    </nav>
+
+    <!-- Заголовок -->
+    <header class="bg-gradient-to-r from-purple-600 to-purple-900 text-white py-8 text-center">
+        <h1 class="text-3xl md:text-4xl font-bold">Інвестування: просте пояснення</h1>
+    </header>
+
+<section class="max-w-4xl mx-auto px-4 py-12">
+    <h2 class="text-2xl font-semibold text-purple-700 mb-4">Що таке інвестування?</h2>
+    <p class="text-gray-600 mb-4">Інвестування — це коли ти вкладаєш гроші в щось, щоб у майбутньому отримати більше грошей. Це схоже на посадити насіння і чекати, поки виросте дерево.</p>
+
+    <h2 class="text-2xl font-semibold text-purple-700 mb-4">Приклад</h2>
+    <p class="text-gray-600 mb-4">Ти кладеш 1000 грн у банк під 10% річних. Через рік матимеш 1100 грн — 100 грн “заробилися” самі, бо гроші працювали замість тебе.</p>
+
+    <h2 class="text-2xl font-semibold text-purple-700 mb-4">Куди можна інвестувати?</h2>
+    <ul class="list-disc pl-6 text-gray-600 mb-4">
+        <li>Банк (депозит) — найпростіше. Безпечно, але прибуток невеликий.</li>
+        <li>Акції — ти купуєш “частинку” компанії. Якщо компанія зростає, ти заробляєш.</li>
+        <li>Облігації — ти “даєш у борг” державі або бізнесу й отримуєш відсотки.</li>
+        <li>Свій розвиток — курси, навчання, книги. Це теж інвестиція, яка може дати прибуток у майбутньому.</li>
+    </ul>
+
+
+    <h2 class="text-2xl font-semibold text-purple-700 mb-4">Чим інвестування відрізняється від просто накопичення?</h2>
+    <ul class="list-disc pl-6 text-gray-600 mb-4">
+        <li>Накопичення — це зберегти гроші</li>
+        <li>Інвестування — це збільшити гроші з ризиком (але потенційно з вигодою)</li>
+    </ul>
+
+    <h2 class="text-2xl font-semibold text-purple-700 mb-4">Чи є ризики?</h2>
+    <p class="text-gray-600 mb-4">Так. Наприклад:</p>
+    <ul class="list-disc pl-6 text-gray-600 mb-4">
+        <li>Ціни на акції можуть впасти</li>
+        <li>Інфляція може “з’їсти” твій прибуток</li>
+        <li>Не всі інвестиції гарантують дохід</li>
+    </ul>
+    <p class="text-gray-600 mb-4">Тому важливо розбиратися і не вкладати всі гроші в одне місце.</p>
+
+    <h2 class="text-2xl font-semibold text-purple-700 mb-4">Що важливо пам’ятати?</h2>
+    <ul class="list-disc pl-6 text-gray-600 mb-4">
+        <li>Починати можна з малих сум</li>
+        <li>Вивчай, у що інвестуєш</li>
+        <li>Краще довго, ніж швидко й ризиковано</li>
+        <li>Інвестування = фінансова свобода в майбутньому</li>
+    </ul>
+
+</section>
+
+    <!-- Кнопки -->
+    <section class="max-w-4xl mx-auto px-4 py-6 flex justify-between">
+        <a href="/teens" class="bg-gray-500 text-white py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors">Назад</a>
+        <a href="/teens/courses/investing/test" class="bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-800 transition-colors">Пройти тест</a>
+    </section>
+
+    <!-- Футер -->
+    <footer class="bg-purple-900 text-white text-center py-6">
+        <p>© 2025 FinWise. Усі права захищено.</p>
+        <div class="mt-2 space-x-4">
+            <a href="/privacy" class="text-gray-300 hover:text-white">Політика конфіденційності</a>
+            <a href="/terms" class="text-gray-300 hover:text-white">Умови використання</a>
+            <a href="/contact" class="text-gray-300 hover:text-white">Контакти</a>
+        </div>
+    </footer>
+</body>
+</html>

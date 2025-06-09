@@ -15,6 +15,11 @@ CORRECT_ANSWERS = {
     'deposit': {'q1': 'c', 'q2': 'b', 'q3': 'b', 'q4': 'c', 'q5': 'c'},
     'credit': {'q1': 'b', 'q2': 'c', 'q3': 'b', 'q4': 'b', 'q5': 'c'},
     'banking': {'q1': 'b', 'q2': 'b', 'q3': 'c', 'q4': 'c', 'q5': 'c'},
+    'marketing': {'q1': 'b', 'q2': 'b', 'q3': 'c', 'q4': 'b', 'q5': 'c'},
+    'pricing': {'q1': 'b', 'q2': 'b', 'q3': 'c', 'q4': 'b', 'q5': 'b'},
+    'saving': {'q1': 'b', 'q2': 'b', 'q3': 'b', 'q4': 'c', 'q5': 'a'},
+    'investing': {'q1': 'c', 'q2': 'b', 'q3': 'b', 'q4': 'b', 'q5': 'a'},
+    'pyramid': {'q1': 'b', 'q2': 'b', 'q3': 'b', 'q4': 'b', 'q5': 'b'},
 }
 
 # Режим для підлітків
@@ -192,25 +197,25 @@ def teens_credit_test():
 def teens_banking_test():
     return render_template('teens_banking_test.html')
 
-# @app.route('/teens/courses/marketing/test')
-# def teens_course_marketing():
-#     return render_template('teens_marketing.html')
+@app.route('/teens/courses/marketing/test')
+def teens_marketing_test():
+    return render_template('teens_marketing_test.html')
 
-# @app.route('/teens/courses/pricing/test')
-# def teens_course_pricing():
-#     return render_template('teens_pricing.html')
+@app.route('/teens/courses/pricing/test')
+def teens_pricing_test():
+    return render_template('teens_pricing_test.html')
 
-# @app.route('/teens/courses/saving/test')
-# def teens_course_saving():
-#     return render_template('teens_saving.html')
+@app.route('/teens/courses/saving/test')
+def teens_saving_test():
+    return render_template('teens_saving_test.html')
 
-# @app.route('/teens/courses/investing/test')
-# def teens_course_investing():
-#     return render_template('teens_investing.html')
+@app.route('/teens/courses/investing/test')
+def teens_investing_test():
+    return render_template('teens_investing_test.html')
 
-# @app.route('/teens/courses/pyramid/test')
-# def teens_course_pyramid():
-#     return render_template('teens_pyramid.html')
+@app.route('/teens/courses/pyramid/test')
+def teens_pyramid_test():
+    return render_template('teens_pyramid_test.html')
 
 
 if __name__ == '__main__':
