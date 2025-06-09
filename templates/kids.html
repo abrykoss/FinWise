@@ -5,6 +5,44 @@
     <title>Курс для дітей</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #7c3aed;
+            padding: 1rem;
+            z-index: 1000;
+        }
+
+        .navbar .btn {
+            margin: 0;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+        }
+
+        header {
+            background-color: #7c3aed;
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem 2rem;
+            min-height: 300px;
+            margin-top: 60px; /* Adjust for navbar height */
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
         .video-container {
             max-width: 600px;
             margin: 20px auto;
@@ -13,27 +51,138 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        video {
+
+        iframe {
             width: 100%;
-            height: auto;
+            height: 315px;
             border-radius: 8px;
             display: block;
         }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        #material h2 {
+            text-align: center;
+            color: #6a1b9a;
+            margin-bottom: 1.5rem;
+        }
+
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .course-card {
+            background-color: white;
+            border: 2px solid #d3c7f3;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .course-card h3 {
+            color: #6a1b9a;
+            margin-top: 0;
+            font-size: 1.2rem;
+        }
+
+        .course-card p {
+            color: #555;
+            font-size: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background-color: #8e24aa;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+            margin: 0.5rem;
+        }
+
+        .btn:hover {
+            background-color: #4a0072;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        #quiz-form {
+            margin-top: 20px;
+        }
+
+        #quiz-form p {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        #quiz-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        #result {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #6a1b9a;
+            margin-top: 20px;
+        }
+
+        footer {
+            background-color: #6a1b9a;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 2rem;
+        }
+
         @media (max-width: 768px) {
             .video-container {
                 max-width: 90%;
             }
-        }
-        #material h2 {
-            text-align: center;
+            .materials-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            .navbar .btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+            header {
+                padding-top: 5rem;
+                margin-top: 50px;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="navbar">
+        <button class="btn" onclick="goBack()">Назад</button>
+    </div>
+
     <header>
         <h1>Курс з фінансової грамотності для дітей</h1>
         <div class="video-container">
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/FQ-eMK0jwPI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/FQ-eMK0jwPI" title="Financial Literacy for Kids" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </header>
 
@@ -41,7 +190,9 @@
         <section id="material">
             <h2>Освітній матеріал</h2>
             <div id="materials-content" class="materials-grid"></div>
-            <button class="btn" onclick="startTest()" style="margin: auto; display: block;">Розпочати тест</button>
+            <div style="text-align: center;">
+                <button class="btn" onclick="startTest()">Розпочати тест</button>
+            </div>
         </section>
 
         <section id="test" style="display: none;">
@@ -52,6 +203,10 @@
             <button class="btn" id="back-to-main" style="display: none;" onclick="goBack()">Повернутись на головну</button>
         </section>
     </main>
+
+    <footer>
+        <p>Вчися фінансової грамотності та досягай своїх мрій! 💡</p>
+    </footer>
 
     <script>
         fetch('/static/materialskids.txt')

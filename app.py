@@ -11,7 +11,7 @@ def index():
 # Словник із правильними відповідями для кожного тесту
 CORRECT_ANSWERS = {
     'budget': {'q1': 'b', 'q2': 'b', 'q3': 'b', 'q4': 'b', 'q5': 'b'},
-    'taxes': {'q1': 'b', 'q2': 'b', 'q3': 'b', 'q4': 'b', 'q5': 'b'},  
+    'taxes': {'q1': 'b', 'q2': 'b', 'q3': 'b', 'q4': 'b', 'q5': 'b'},
     'deposit': {'q1': 'c', 'q2': 'b', 'q3': 'b', 'q4': 'c', 'q5': 'c'},
     'credit': {'q1': 'b', 'q2': 'c', 'q3': 'b', 'q4': 'b', 'q5': 'c'},
     'banking': {'q1': 'b', 'q2': 'b', 'q3': 'c', 'q4': 'c', 'q5': 'c'},
@@ -220,6 +220,7 @@ def teens_investing_test():
 @app.route('/teens/courses/pyramid/test')
 def teens_pyramid_test():
     return render_template('teens_pyramid_test.html')
+
 
 
 if __name__ == '__main__':
