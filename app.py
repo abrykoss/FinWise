@@ -176,6 +176,10 @@ def teens_course_investing():
 def teens_course_pyramid():
     return render_template('teens_pyramid.html')
 
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
 
 @app.route('/teens/courses/budget/test')
 def teens_budget_test():
