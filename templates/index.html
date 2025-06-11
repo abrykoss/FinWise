@@ -10,21 +10,21 @@
 </head>
 <body class="bg-gray-50 text-gray-800">
     <!-- Навігація -->
-<nav class="bg-white shadow-md py-4">
-    <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
-        <div class="flex items-center space-x-2">
-            <i class="fas fa-book text-2xl text-purple-600"></i>
-            <h1 class="text-2xl font-bold text-purple-700">FinWise</h1>
+    <nav class="bg-white shadow-md py-4">
+        <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-book text-2xl text-purple-600"></i>
+                <h1 class="text-2xl font-bold text-purple-700">FinWise</h1>
+            </div>
+            <div class="space-x-6">
+                <a href="/" class="text-gray-600 hover:text-purple-600">Головна</a>
+                <a href="#courses" class="text-gray-600 hover:text-purple-600">Курси</a>
+                <a href="#tools" class="text-gray-600 hover:text-purple-600">Інструменти</a>
+                <a href="/contact" class="text-gray-600 hover:text-purple-600">Контакти</a>
+            </div>
+            <a href="javascript:void(0)" onclick="scrollToSection('courses')" class="bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-800 transition-colors">Почати навчання</a>
         </div>
-        <div class="space-x-6">
-            <a href="/" class="text-gray-600 hover:text-purple-600">Головна</a>
-            <a href="#courses" class="text-gray-600 hover:text-purple-600">Курси</a>
-            <a href="#tools" class="text-gray-600 hover:text-purple-600">Інструменти</a>
-            <a href="/contact" class="text-gray-600 hover:text-purple-600">Контакти</a>
-        </div>
-        <a href="/get-started" class="bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-800 transition-colors">Почати навчання</a>
-    </div>
-</nav>
+    </nav>
 
     <!-- Заголовок -->
     <header class="bg-gradient-to-r from-purple-600 to-purple-900 text-white py-16 md:py-24 flex items-center">
@@ -32,7 +32,7 @@
             <div class="md:w-1/2 text-center md:text-left">
                 <h1 class="text-4xl md:text-5xl font-bold mb-4">Навчання фінансової грамотності для школярів</h1>
                 <p class="text-lg mb-6">FinWise – це інтерактивна платформа з курсами, тестами та симуляціями для дітей віком до 13 та до 17 років.</p>
-                <a href="/get-started" class="bg-white text-purple-700 py-3 px-6 rounded-lg font-semibold hover:bg-gray-100 transition-colors">Почати зараз</a>
+                <a href="javascript:void(0)" onclick="scrollToSection('courses')" class="bg-white text-purple-700 py-3 px-6 rounded-lg font-semibold hover:bg-gray-100 transition-colors">Почати зараз</a>
             </div>
             <div class="md:w-1/2 mt-6 md:mt-0">
                 <!-- Placeholder для зображення -->
@@ -47,7 +47,7 @@
         <div class="flex flex-col md:flex-row items-center gap-6">
             <div class="md:w-1/2">
                 <!-- Placeholder для зображення -->
-                <img src="/static/images/about-image.jpg" alt="Дитина вчиться фінансовій грамотності" class="w-full rounded-lg">
+                <img src="/static/images/444511c6-c0c2-4f86-862e-43c7a496c941_removalai_preview.png" alt="Дитина вчиться фінансовій грамотності" class="w-full rounded-lg">
             </div>
             <div class="md:w-1/2">
                 <p class="text-lg">FinWise – це платформа, яка допомагає школярам опанувати фінансову грамотність у цікавій та інтерактивній формі. Ми пропонуємо курси для двох вікових груп, тести для перевірки знань, а також практичні симуляції реальних фінансових ситуацій.</p>
@@ -91,7 +91,7 @@
                 <i class="fas fa-gamepad text-4xl text-purple-600 mb-4"></i>
                 <h3 class="text-xl font-bold text-purple-700 mb-2">Міні-гра: Життєві ситуації</h3>
                 <p>Практикуйте фінансові рішення у цікавій ігровій формі.</p>
-                <a href="/game" class="btn mt-4 inline-block bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-800 transition-colors">Грати</a>
+                <a href="/teens/route" class="btn mt-4 inline-block bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-800 transition-colors">Грати</a>
             </div>
         </div>
     </section>
@@ -127,5 +127,11 @@
             <a href="/contact" class="text-gray-300 hover:text-white">Контакти</a>
         </div>
     </footer>
+
+    <script>
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
 </body>
 </html>

@@ -220,6 +220,9 @@ def teens_investing_test():
 @app.route('/teens/courses/pyramid/test')
 def teens_pyramid_test():
     return render_template('teens_pyramid_test.html')
+@app.route('/terms')
+def terms():
+    return render_template('terms.html')
 
 
 

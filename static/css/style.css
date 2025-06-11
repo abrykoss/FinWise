@@ -151,7 +151,7 @@ input:focus {
 #game-step .choice-btn {
     display: inline-block;
     padding: 0.8rem 1.5rem;
-    background-color: #8e24aa;
+    background-color: #4c1d95;
     color: white;
     text-decoration: none;
     border-radius: 5px;
@@ -160,11 +160,92 @@ input:focus {
 }
 
 #game-step .choice-btn:hover {
-    background-color: #4a0072;
+    background-color: #4c1d95;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 #progress-bar {
     transition: width 0.5s ease-in-out;
+}
+
+/* Анімації */
+.animate-fade-in {
+    animation: fadeIn 1s ease-in-out;
+}
+
+.animate-slide-up {
+    animation: slideUp 0.8s ease-out;
+}
+
+.animate-pulse {
+    animation: pulse 1.5s infinite;
+}
+
+/* Ключові кадри анімацій */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Стилізація кнопок вибору */
+.choice-btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: #8e24aa;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 0.5rem;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.choice-btn:hover {
+    background-color: #4a0072;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Стилізація іконок */
+#step-title i {
+    font-size: 1.5rem;
+    vertical-align: middle;
+    animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* Додаткові стилі для тексту */
+#step-title {
+    color: #6b21a8;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+#step-description {
+    font-family: 'Arial', sans-serif;
+    background-color: #fefcbf;
+    border-left: 4px solid #fbbf24;
+    padding-left: 1rem;
+}
+
+/* Адаптивність */
+@media (min-width: 640px) {
+    #choices {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }

@@ -3,6 +3,7 @@ const steps = [
     {
         title: "Етап 1: Ти отримав зарплату!",
         description: "Ти отримав 1000 грн зарплати. Як розпорядитися цими коштами?",
+        icon: "fas fa-money-bill-wave", // Іконка для зарплати
         choices: [
             { text: "Заощадити 500 грн", action: () => { gameState.balance += 500; gameState.points += 10; gameState.progress += 20; return "Ти заощадив 500 грн! +10 балів"; }},
             { text: "Витратити 700 грн на новий одяг", action: () => { if (gameState.balance >= 700) { gameState.balance -= 700; gameState.points += 5; gameState.progress += 10; return "Ти витратив 700 грн. +5 балів"; } else return "Недостатньо коштів!"; }},
@@ -12,6 +13,7 @@ const steps = [
     {
         title: "Етап 2: Несподівані витрати",
         description: "Тобі потрібно оплатити ремонт телефону за 400 грн. Що зробиш?",
+        icon: "fas fa-tools", // Іконка для ремонту
         choices: [
             { text: "Оплатити ремонт", action: () => { if (gameState.balance >= 400) { gameState.balance -= 400; gameState.points += 5; gameState.progress += 20; return "Ти оплатив ремонт. +5 балів"; } else return "Недостатньо коштів!"; }},
             { text: "Відкласти ремонт", action: () => { gameState.points -= 5; gameState.progress += 10; return "Ти відкладаєш ремонт, але це може викликати проблеми. -5 балів"; }}
@@ -20,6 +22,7 @@ const steps = [
     {
         title: "Етап 3: Додатковий заробіток",
         description: "Тобі пропонують підробіток за 800 грн. Що зробиш?",
+        icon: "fas fa-briefcase", // Іконка для роботи
         choices: [
             { text: "Взяти підробіток", action: () => { gameState.balance += 800; gameState.points += 10; gameState.progress += 20; return "Ти заробив 800 грн! +10 балів"; }},
             { text: "Відмовитися", action: () => { gameState.progress += 5; return "Ти відмовився від підробітку."; }}
@@ -28,6 +31,7 @@ const steps = [
     {
         title: "Етап 4: Можливість заощадити",
         description: "Ти можеш відкрити депозит із 700 грн на 6 місяців. Що обереш?",
+        icon: "fas fa-piggy-bank", // Іконка для заощаджень
         choices: [
             { text: "Відкрити депозит", action: () => { if (gameState.balance >= 700) { gameState.balance -= 700; gameState.points += 15; gameState.progress += 20; return "Ти відкрив депозит! +15 балів"; } else return "Недостатньо коштів!"; }},
             { text: "Залишити кошти", action: () => { gameState.progress += 10; return "Ти залишив кошти на рахунку."; }}
@@ -36,6 +40,7 @@ const steps = [
     {
         title: "Етап 5: Велика покупка",
         description: "Ти хочеш купити новий гаджет за 1200 грн. Що зробиш?",
+        icon: "fas fa-shopping-cart", // Іконка для покупок
         choices: [
             { text: "Купити гаджет", action: () => { if (gameState.balance >= 1200) { gameState.balance -= 1200; gameState.points += 10; gameState.progress += 20; return "Ти купив гаджет! +10 балів"; } else return "Недостатньо коштів!"; }},
             { text: "Заощадити", action: () => { gameState.points += 5; gameState.progress += 15; return "Ти вирішив заощадити. +5 балів"; }}
@@ -52,7 +57,7 @@ console.log('Завантажений стан з localStorage:', gameState);
 // Явне скидання до першого етапу при завантаженні, якщо стан є
 if (gameState) {
     console.log('Перевіряємо стан для скидання до step: 1');
-    if (gameState.step !== 1 ) {
+    if (gameState.step !== 1) {
         console.log('Скидаємо до першого етапу');
         gameState = {
             balance: 1000,
@@ -84,6 +89,7 @@ function renderStep() {
     const step = gameState.step <= steps.length ? steps[gameState.step - 1] : {
         title: "Гру завершено!",
         description: `Твій кінцевий баланс: ${gameState.balance} грн. Бали: ${gameState.points}.`,
+        icon: "fas fa-trophy", // Іконка для завершення
         choices: [{
             text: "Грати ще раз",
             action: () => {
@@ -101,7 +107,8 @@ function renderStep() {
             }
         }]
     };
-    document.getElementById('step-title').textContent = step.title;
+    const stepTitle = document.getElementById('step-title');
+    stepTitle.innerHTML = `<i class="${step.icon} mr-2 text-purple-600"></i>${step.title}`; // Додаємо іконку
     document.getElementById('step-description').textContent = step.description;
 
     const choicesDiv = document.getElementById('choices');
