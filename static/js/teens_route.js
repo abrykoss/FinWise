@@ -3,7 +3,7 @@ const steps = [
     {
         title: "Етап 1: Ти отримав зарплату!",
         description: "Ти отримав 1000 грн зарплати. Як розпорядитися цими коштами?",
-        icon: "fas fa-money-bill-wave", // Іконка для зарплати
+        icon: "fas fa-money-bill-wave",
         choices: [
             { text: "Заощадити 500 грн", action: () => { gameState.balance += 500; gameState.points += 10; gameState.progress += 20; return "Ти заощадив 500 грн! +10 балів"; }},
             { text: "Витратити 700 грн на новий одяг", action: () => { if (gameState.balance >= 700) { gameState.balance -= 700; gameState.points += 5; gameState.progress += 10; return "Ти витратив 700 грн. +5 балів"; } else return "Недостатньо коштів!"; }},
@@ -13,7 +13,7 @@ const steps = [
     {
         title: "Етап 2: Несподівані витрати",
         description: "Тобі потрібно оплатити ремонт телефону за 400 грн. Що зробиш?",
-        icon: "fas fa-tools", // Іконка для ремонту
+        icon: "fas fa-tools",
         choices: [
             { text: "Оплатити ремонт", action: () => { if (gameState.balance >= 400) { gameState.balance -= 400; gameState.points += 5; gameState.progress += 20; return "Ти оплатив ремонт. +5 балів"; } else return "Недостатньо коштів!"; }},
             { text: "Відкласти ремонт", action: () => { gameState.points -= 5; gameState.progress += 10; return "Ти відкладаєш ремонт, але це може викликати проблеми. -5 балів"; }}
@@ -22,7 +22,7 @@ const steps = [
     {
         title: "Етап 3: Додатковий заробіток",
         description: "Тобі пропонують підробіток за 800 грн. Що зробиш?",
-        icon: "fas fa-briefcase", // Іконка для роботи
+        icon: "fas fa-briefcase",
         choices: [
             { text: "Взяти підробіток", action: () => { gameState.balance += 800; gameState.points += 10; gameState.progress += 20; return "Ти заробив 800 грн! +10 балів"; }},
             { text: "Відмовитися", action: () => { gameState.progress += 5; return "Ти відмовився від підробітку."; }}
@@ -31,7 +31,7 @@ const steps = [
     {
         title: "Етап 4: Можливість заощадити",
         description: "Ти можеш відкрити депозит із 700 грн на 6 місяців. Що обереш?",
-        icon: "fas fa-piggy-bank", // Іконка для заощаджень
+        icon: "fas fa-piggy-bank",
         choices: [
             { text: "Відкрити депозит", action: () => { if (gameState.balance >= 700) { gameState.balance -= 700; gameState.points += 15; gameState.progress += 20; return "Ти відкрив депозит! +15 балів"; } else return "Недостатньо коштів!"; }},
             { text: "Залишити кошти", action: () => { gameState.progress += 10; return "Ти залишив кошти на рахунку."; }}
@@ -40,7 +40,7 @@ const steps = [
     {
         title: "Етап 5: Велика покупка",
         description: "Ти хочеш купити новий гаджет за 1200 грн. Що зробиш?",
-        icon: "fas fa-shopping-cart", // Іконка для покупок
+        icon: "fas fa-shopping-cart",
         choices: [
             { text: "Купити гаджет", action: () => { if (gameState.balance >= 1200) { gameState.balance -= 1200; gameState.points += 10; gameState.progress += 20; return "Ти купив гаджет! +10 балів"; } else return "Недостатньо коштів!"; }},
             { text: "Заощадити", action: () => { gameState.points += 5; gameState.progress += 15; return "Ти вирішив заощадити. +5 балів"; }}
@@ -57,7 +57,7 @@ console.log('Завантажений стан з localStorage:', gameState);
 // Явне скидання до першого етапу при завантаженні, якщо стан є
 if (gameState) {
     console.log('Перевіряємо стан для скидання до step: 1');
-    if (gameState.step !== 1) {
+    if (gameState.step !== 1 || !confirm('Продовжити гру з останнього етапу? Натисніть "Скасувати", щоб почати заново.')) {
         console.log('Скидаємо до першого етапу');
         gameState = {
             balance: 1000,
@@ -83,13 +83,19 @@ function saveGameState() {
     console.log('Збережено стан у localStorage:', gameState);
 }
 
+// Функція для відображення попередження
+function showWarning(message) {
+    alert(message); // Використовуємо alert для простого попередження
+    // Можна замінити на модальне вікно чи стилізоване повідомлення, якщо потрібно
+}
+
 // Функція для відображення поточного етапу
 function renderStep() {
-    console.log('Рендеринг етапу:', gameState.step); // Логування для перевірки
+    console.log('Рендеринг етапу:', gameState.step);
     const step = gameState.step <= steps.length ? steps[gameState.step - 1] : {
         title: "Гру завершено!",
         description: `Твій кінцевий баланс: ${gameState.balance} грн. Бали: ${gameState.points}.`,
-        icon: "fas fa-trophy", // Іконка для завершення
+        icon: "fas fa-trophy",
         choices: [{
             text: "Грати ще раз",
             action: () => {
@@ -101,32 +107,36 @@ function renderStep() {
                     progress: 0
                 };
                 saveGameState();
-                document.getElementById('result').textContent = ""; // Очищаємо попередній результат
-                location.reload(); // Перезавантажуємо сторінку для гарантованого скидання
+                document.getElementById('result').textContent = "";
+                location.reload();
                 return "";
             }
         }]
     };
     const stepTitle = document.getElementById('step-title');
-    stepTitle.innerHTML = `<i class="${step.icon} mr-2 text-purple-600"></i>${step.title}`; // Додаємо іконку
+    stepTitle.innerHTML = `<i class="${step.icon} mr-2 text-purple-600"></i>${step.title}`;
     document.getElementById('step-description').textContent = step.description;
 
     const choicesDiv = document.getElementById('choices');
-    choicesDiv.innerHTML = ''; // Очищаємо попередні кнопки
+    choicesDiv.innerHTML = '';
     if (step.choices && step.choices.length > 0) {
-        console.log('Додаємо кнопки вибору:', step.choices.map(c => c.text)); // Логування тексту кнопок
+        console.log('Додаємо кнопки вибору:', step.choices.map(c => c.text));
         step.choices.forEach((choice, index) => {
             const button = document.createElement('button');
             button.className = 'choice-btn';
             button.textContent = choice.text;
             button.onclick = () => {
                 const result = choice.action();
+                if (result === "Недостатньо коштів!") {
+                    showWarning("У вас недостатньо коштів для цієї дії! Оберіть інший варіант.");
+                    return; // Блокуємо перехід до наступного етапу
+                }
                 document.getElementById('result').textContent = result;
                 if (gameState.step === steps.length) {
-                    gameState.step += 1; // Перехід до стану завершення після 5-го етапу
+                    gameState.step += 1;
                     console.log('Перехід до завершення гри, step стало:', gameState.step);
                 } else if (gameState.step < steps.length) {
-                    gameState.step += 1; // Перехід до наступного етапу
+                    gameState.step += 1;
                 }
                 gameState.progress = Math.min(gameState.progress, 100);
 
